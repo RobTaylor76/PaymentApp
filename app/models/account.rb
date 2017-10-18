@@ -1,4 +1,5 @@
-class User < ApplicationRecord
+class Account < ApplicationRecord
 
-  has_secure_password
+  has_many :users
+
 end
