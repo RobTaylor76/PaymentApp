@@ -9,12 +9,15 @@ class CreatePayments < ActiveRecord::Migration[5.0]
       t.datetime :date
       t.datetime :paid_at
 
+      t.decimal :amount, :precision => 10 , :scale => 2
       t.decimal :amount_requested, :precision => 10 , :scale => 2
       t.decimal :amount_received, :precision => 10 , :scale => 2
       t.decimal :amount_fees, :precision => 10 , :scale => 2
 
       t.string :external_id
       t.string :guid
+
+      t.references :account, foreign_key: true
 
       t.timestamps
     end

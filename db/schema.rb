@@ -29,13 +29,16 @@ ActiveRecord::Schema.define(version: 20171018211046) do
     t.string   "description"
     t.datetime "date"
     t.datetime "paid_at"
+    t.decimal  "amount",           precision: 10, scale: 2
     t.decimal  "amount_requested", precision: 10, scale: 2
     t.decimal  "amount_received",  precision: 10, scale: 2
     t.decimal  "amount_fees",      precision: 10, scale: 2
     t.string   "external_id"
     t.string   "guid"
+    t.integer  "account_id"
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
+    t.index ["account_id"], name: "index_payments_on_account_id"
   end
 
   create_table "users", force: :cascade do |t|

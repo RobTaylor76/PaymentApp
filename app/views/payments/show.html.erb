@@ -1,0 +1,72 @@
+<h1>show</h1>
+
+<div>
+  <%= link_to 'Back',payments_path %>
+
+</div>
+
+<%= form_for(@payment) do |f| %>
+
+
+    <% f.with_options(:disabled => true ) do |form| %>
+
+        <div class='field'>
+          <%= form.label :type %>
+          <%= form.text_field :type, :disabled => true %>
+        </div>
+
+
+        <div class='field'>
+          <%= form.label :date %>
+          <%= form.text_field :date %>
+        </div>
+
+        <div class='field'>
+          <%= form.label :status %>
+          <%= form.text_field :status %>
+        </div>
+
+        <div class='field'>
+          <%= form.label :amount %>
+          <%= form.text_field :amount_requested %>
+        </div>
+
+
+        <div class='field'>
+          <%= form.label :amount_requested %>
+          <%= form.text_field :amount_requested %>
+        </div>
+
+        <div class='field'>
+          <%= form.label :amount_received %>
+          <%= form.text_field :amount_received%>
+        </div>
+
+        <div class='field'>
+          <%= form.label :amount_fees %>
+          <%= form.text_field :amount_fees %>
+        </div>
+
+        <div class='field'>
+          <%= form.label :description %>
+          <%= form.text_field :description %>
+        </div>
+
+
+        <div class='field'>
+          <%= form.label :email %>
+          <%= form.text_field :email %>
+        </div>
+
+        <div class='field'>
+          <%= form.label :external_id %>
+          <%= form.text_field :external_id %>
+        </div>
+
+        <div class='field'>
+          <%= form.label :guid %>
+          <%= form.text_field :guid %>
+        </div>
+
+    <% end %>
+<% end %>

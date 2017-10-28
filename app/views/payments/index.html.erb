@@ -1,0 +1,36 @@
+<table>
+  <thead>
+  <tr>
+    <td>Id</td>
+    <td>Payment Amount</td>
+    <td>Payment Status</td>
+    <td>Requested Amount</td>
+    <td>Received</td>
+    <td>Fees</td>
+    <td>Email</td>
+    <td>Description</td>
+    <td>Payment Id</td>
+    <td>View</td>
+  </tr>
+  </thead>
+
+
+  <% @payments.each do |payment| %>
+      <tr>
+        <td><%=payment.id%></td>
+        <td><%=payment.amount%></td>
+        <td><%=payment.status%></td>
+
+        <td><%=payment.amount_requested%></td>
+        <td><%=payment.amount_received%></td>
+        <td><%=payment.amount_fees%></td>
+        <td><%=payment.email %></td>
+        <td><%=payment.description%></td>
+        <td><%=payment.external_id%></td>
+
+        <td><%= link_to 'show',payment_path( payment) %></td>
+      </tr>
+
+  <% end %>
+
+</table>

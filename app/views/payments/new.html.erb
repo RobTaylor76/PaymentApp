@@ -1,0 +1,16 @@
+<h1>Create Payment</h1>
+
+<%= form_for(@payment) do |f| %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email, class: 'form-control' %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description, class: 'form-control' %>
+
+    <%= f.label :amount %>
+    <%= f.text_field :amount_requested, class: 'form-control' %>
+
+
+ <%= f.submit "Create Payment", class: "btn btn-primary" %>
+<% end  %>
