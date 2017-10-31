@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171018211046) do
+ActiveRecord::Schema.define(version: 20171031192908) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20171018211046) do
     t.integer  "account_id"
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
+    t.text     "status_message"
     t.index ["account_id"], name: "index_payments_on_account_id"
   end
 

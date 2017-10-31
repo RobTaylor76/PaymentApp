@@ -28,7 +28,7 @@
 
         <div class='field'>
           <%= form.label :amount %>
-          <%= form.text_field :amount_requested %>
+          <%= form.text_field :amount %>
         </div>
 
 
@@ -52,6 +52,11 @@
           <%= form.text_field :description %>
         </div>
 
+        <div class='field'>
+          <%= form.label :status_message %>
+          <%= form.text_field :status_message %>
+        </div>
+
 
         <div class='field'>
           <%= form.label :email %>
@@ -69,4 +74,25 @@
         </div>
 
     <% end %>
+<% end %>
+
+<% if @payment.draft? %>
+
+<form action="<%= payment_stripe_callback_url(@payment, guid: @payment.guid) %>" method="POST">
+  <script
+  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+  data-key="<%= current_account.stripe_pk %>"
+  data-currency="GBP"
+  data-amount="<%= @payment.amount_in_pence %>"
+  data-name="<%= current_account.name %>"
+  data-label="Pay with Stripe"
+  data-description="<%= @payment.description %>"
+  data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+  data-locale="auto"
+  data-email="<%= @payment.email %>"
+  data-allow-remember-me="false"
+  data-zip-code="false">
+  </script>
+</form>
+
 <% end %>

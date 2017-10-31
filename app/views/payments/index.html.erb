@@ -2,8 +2,9 @@
   <thead>
   <tr>
     <td>Id</td>
-    <td>Payment Amount</td>
-    <td>Payment Status</td>
+    <td>Amount</td>
+    <td>Status</td>
+    <td>Status Message</td>
     <td>Requested Amount</td>
     <td>Received</td>
     <td>Fees</td>
@@ -20,6 +21,7 @@
         <td><%=payment.id%></td>
         <td><%=payment.amount%></td>
         <td><%=payment.status%></td>
+        <td><%=payment.status_message%></td>
 
         <td><%=payment.amount_requested%></td>
         <td><%=payment.amount_received%></td>

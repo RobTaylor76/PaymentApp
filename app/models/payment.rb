@@ -3,6 +3,21 @@ class Payment < ApplicationRecord
 
   belongs_to :account
 
+  def amount_in_pence
+    (self.amount * 100.0).to_i
+  end
+
+  def draft?
+    status == 'draft'
+  end
+
+  def paid?
+    status == 'paid'
+  end
+
+  def failed?
+    status == 'failed'
+  end
 
   def init
     self.status ||= 'draft'
