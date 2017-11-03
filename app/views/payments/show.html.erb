@@ -1,112 +1,97 @@
 <div class="container">
 
 
-<div>
-  <%= link_to 'Back',payments_path %>
+  <div class="row">
+    <%= link_to 'Back', payments_path, class: "btn btn-default" %>
 
-</div>
+  </div>
 
-<%= form_for(@payment) do |f| %>
+  <div class="row">
+  <%= form_for(@payment) do |f| %>
 
 
-    <% f.with_options(:disabled => true ) do |form| %>
-        <div class="form-group">
-        <div class='field'>
-          <%= form.label :type %>
-          <%= form.text_field :type, :disabled => true %>
-        </div>
-        </div>
-        <div class="form-group">
+      <% f.with_options(:disabled => true) do |form| %>
+          <div class="form-group">
 
-        <div class='field'>
-          <%= form.label :date %>
-          <%= form.text_field :date %>
-        </div>
-        </div>
-        <div class="form-group">
-        <div class='field'>
-          <%= form.label :status %>
-          <%= form.text_field :status %>
-        </div>
-        </div>
-        <div class="form-group">
-        <div class='field'>
-          <%= form.label :amount %>
-          <%= form.text_field :amount %>
-        </div>
+              <%= form.label :type %>
+              <%= form.text_field :type, :disabled => true %>
 
-        </div>
-        <div class="form-group">
-        <div class='field'>
-          <%= form.label :amount_requested %>
-          <%= form.text_field :amount_requested %>
-        </div>
-        </div>
-        <div class="form-group">
-        <div class='field'>
-          <%= form.label :amount_received %>
-          <%= form.text_field :amount_received%>
-        </div>
-        </div>
-        <div class="form-group">
-        <div class='field'>
-          <%= form.label :amount_fees %>
-          <%= form.text_field :amount_fees %>
-        </div>
-        </div>
-        <div class="form-group">
-        <div class='field'>
-          <%= form.label :description %>
-          <%= form.text_field :description %>
-        </div>
-        </div>
-        <div class="form-group">
-        <div class='field'>
-          <%= form.label :status_message %>
-          <%= form.text_field :status_message %>
-        </div>
+          </div>
+          <div class="form-group">
 
-        </div>
-        <div class="form-group">
-        <div class='field'>
-          <%= form.label :email %>
-          <%= form.text_field :email %>
-        </div>
-        </div>
-        <div class="form-group">
-        <div class='field'>
-          <%= form.label :external_id %>
-          <%= form.text_field :external_id %>
-        </div>
-        </div>
-        <div class="form-group">
-        <div class='field'>
-          <%= form.label :guid %>
-          <%= form.text_field :guid %>
-        </div>
-        </div>
-    <% end %>
-<% end %>
 
-<% if @payment.draft? %>
+              <%= form.label :date %>
+              <%= form.date_field :date %>
 
-<form action="<%= payment_stripe_callback_url(@payment, guid: @payment.guid) %>" method="POST">
-  <script
-  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-  data-key="<%= current_account.stripe_pk %>"
-  data-currency="GBP"
-  data-amount="<%= @payment.amount_in_pence %>"
-  data-name="<%= current_account.name %>"
-  data-label="Pay with Stripe"
-  data-description="<%= @payment.description %>"
-  data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-  data-locale="auto"
-  data-email="<%= @payment.email %>"
-  data-allow-remember-me="false"
-  data-zip-code="false">
-  </script>
-</form>
+          </div>
 
-<% end %>
+          <div class="form-group">
+
+              <%= form.label :email %>
+              <%= form.email_field :email %>
+
+          </div>
+          <div class="form-group">
+
+              <%= form.label :description %>
+              <%= form.text_field :description %>
+
+          </div>
+
+          <div class="form-group">
+
+              <%= form.label :status %>
+              <%= form.text_field :status %>
+
+          </div>
+
+          <div class="form-group">
+
+              <%= form.label :amount %>
+              <%= form.number_field :amount %>
+
+
+          </div>
+
+          <% if @payment.paid? %>
+              <div class="form-group">
+
+                  <%= form.label :amount_fees %>
+                  <%= form.number_field :amount_fees %>
+
+              </div>
+          <% end %>
+
+          <% unless @payment.draft? %>
+          <div class="form-group">
+
+              <%= form.label :status_message %>
+              <%= form.text_field :status_message %>
+
+          </div>
+          <% end %>
+      <% end %>
+  <% end %>
+  </div>
+  <% if @payment.draft? %>
+
+      <form action="<%= payment_stripe_callback_url(@payment, guid: @payment.guid) %>" method="POST">
+        <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="<%= current_account.stripe_pk %>"
+        data-currency="GBP"
+        data-amount="<%= @payment.amount_in_pence %>"
+        data-name="<%= current_account.name %>"
+        data-label="Pay with Stripe"
+        data-description="<%= @payment.description %>"
+        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+        data-locale="auto"
+        data-email="<%= @payment.email %>"
+        data-allow-remember-me="false"
+        data-zip-code="false">
+        </script>
+      </form>
+
+  <% end %>
 
 </div>

@@ -1,7 +1,10 @@
 <div class="container">
 
 
+  <div>
+    <%= link_to 'Menu', menu_path, class: "btn btn-default" %>
 
+  </div>
 
 <h1>Create Payment</h1>
 
@@ -29,7 +32,7 @@
     </div>
     <div class="form-group">
     <%= f.label :amount %>
-    <%= f.text_field :amount, class: 'form-control' %>
+    <%= f.number_field :amount, class: 'form-control' %>
     </div>
 
  <%= f.submit "Create Payment", class: "btn btn-primary" %>
