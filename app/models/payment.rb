@@ -3,6 +3,10 @@ class Payment < ApplicationRecord
 
   belongs_to :account
 
+  validates  :amount, :numericality => {greater_than_or_equal_to: 1.00}
+  validates :email, :presence => true
+  validates :description, :presence => true
+
   def amount_in_pence
     (self.amount * 100.0).to_i
   end

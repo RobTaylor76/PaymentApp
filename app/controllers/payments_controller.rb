@@ -14,6 +14,8 @@ class PaymentsController < ApplicationController
 
     if @payment.save
       render :show
+    else
+      render :new
     end
   end
 

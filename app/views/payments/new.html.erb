@@ -1,16 +1,37 @@
+<div class="container">
+
+
+
+
 <h1>Create Payment</h1>
 
 <%= form_for(@payment) do |f| %>
+      <% if @payment.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@payment.errors.count, "error") %> prohibited this Payment from being saved:</h2>
 
+            <ul>
+              <% @payment.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+
+
+    <div class="form-group">
   <%= f.label :email %>
   <%= f.email_field :email, class: 'form-control' %>
-
+    </div>
+    <div class="form-group">
   <%= f.label :description %>
   <%= f.text_field :description, class: 'form-control' %>
-
+    </div>
+    <div class="form-group">
     <%= f.label :amount %>
     <%= f.text_field :amount, class: 'form-control' %>
-
+    </div>
 
  <%= f.submit "Create Payment", class: "btn btn-primary" %>
 <% end  %>
+</div>

@@ -1,38 +1,41 @@
-<table>
-  <thead>
-  <tr>
-    <td>Id</td>
-    <td>Amount</td>
-    <td>Status</td>
-    <td>Status Message</td>
-    <td>Requested Amount</td>
-    <td>Received</td>
-    <td>Fees</td>
-    <td>Email</td>
-    <td>Description</td>
-    <td>Payment Id</td>
-    <td>View</td>
-  </tr>
-  </thead>
+<div class="container-fluid">
 
+
+<table class="table-condensed table-striped table-bordered">
+
+  <tr class="row">
+    <td class="col-md-1">Date</td>
+    <td class="col-md-1">Email</td>
+
+    <td class="col-md-1">Status</td>
+    <td class="col-md-1">View</td>
+
+  </tr>
+  <tr class="row">
+    <td class="col-md-1">&nbsp;</td>
+
+    <td class="col-md-1">Amount</td>
+    <td class="col-md-1">Fees</td>
+    <td class="col-md-1">&nbsp;</td>
+
+  </tr>
 
   <% @payments.each do |payment| %>
-      <tr>
-        <td><%=payment.id%></td>
-        <td><%=payment.amount%></td>
-        <td><%=payment.status%></td>
-        <td><%=payment.status_message%></td>
+      <tr class="row">
+        <td class="col-md-1"><%=I18n.l(payment.date.to_date)%></td>
+        <td class="col-md-1"><%=payment.email %>
+        <td class="col-md-1"><%=payment.status%></td>
+        <td class="col-md-1"><%= link_to 'show',payment_path( payment) %></td>
+      </tr>
+      <tr class="row">
+        <td class="col-md-1">&nbsp;</td>
 
-        <td><%=payment.amount_requested%></td>
-        <td><%=payment.amount_received%></td>
-        <td><%=payment.amount_fees%></td>
-        <td><%=payment.email %></td>
-        <td><%=payment.description%></td>
-        <td><%=payment.external_id%></td>
-
-        <td><%= link_to 'show',payment_path( payment) %></td>
+        <td class="col-md-1"><%=number_to_currency(payment.amount)%></td>
+        <td class="col-md-1"><%=number_to_currency(payment.amount_fees)%></td>
+        <td class="col-md-1">&nbsp;</td>
       </tr>
 
   <% end %>
 
 </table>
+</div>
