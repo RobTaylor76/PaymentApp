@@ -10,7 +10,14 @@
 
   <body>
   <% if logged_in? %>
-      <%= link_to 'Logout', logout_path, :method => :delete %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2"><%= current_user.name %></div>
+      <div class="col-md-2 col-md-offset-1"><%= current_account.name %></div>
+      <div class="col-md-1 col-md-offset-1"><%= link_to 'Logout', logout_path, :method => :delete %></div>
+    </div>
+  </div>
+
 
   <% end %>
     <%= yield %>

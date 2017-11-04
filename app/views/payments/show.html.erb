@@ -15,41 +15,41 @@
           <div class="form-group">
 
               <%= form.label :type %>
-              <%= form.text_field :type, :disabled => true %>
+              <%= form.text_field :type, class: 'form-control', :disabled => true %>
 
           </div>
           <div class="form-group">
 
 
               <%= form.label :date %>
-              <%= form.date_field :date %>
+              <%= form.date_field :date, class: 'form-control' %>
 
           </div>
 
           <div class="form-group">
 
               <%= form.label :email %>
-              <%= form.email_field :email %>
+              <%= form.email_field :email, class: 'form-control' %>
 
           </div>
           <div class="form-group">
 
               <%= form.label :description %>
-              <%= form.text_field :description %>
+              <%= form.text_field :description, class: 'form-control' %>
 
           </div>
 
           <div class="form-group">
 
               <%= form.label :status %>
-              <%= form.text_field :status %>
+              <%= form.text_field :status, class: 'form-control' %>
 
           </div>
 
           <div class="form-group">
 
               <%= form.label :amount %>
-              <%= form.number_field :amount %>
+              <%= form.number_field :amount, class: 'form-control' %>
 
 
           </div>
@@ -58,7 +58,7 @@
               <div class="form-group">
 
                   <%= form.label :amount_fees %>
-                  <%= form.number_field :amount_fees %>
+                  <%= form.number_field :amount_fees, class: 'form-control' %>
 
               </div>
           <% end %>
@@ -67,7 +67,7 @@
           <div class="form-group">
 
               <%= form.label :status_message %>
-              <%= form.text_field :status_message %>
+              <%= form.text_field :status_message, class: 'form-control' %>
 
           </div>
           <% end %>
