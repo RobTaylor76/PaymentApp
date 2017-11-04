@@ -33,6 +33,9 @@ gem 'bcrypt'
 
 gem "stripe"
 
+gem "dotenv-rails"
+
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
