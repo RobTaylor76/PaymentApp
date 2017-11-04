@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       login_user(user)
       redirect_to menu_path
     else
-    #  flash.now[:danger] = 'Invalid Email/Password Combination'
+      flash.now[:danger] = 'Invalid Email/Password Combination'
       render :new
     end
   end

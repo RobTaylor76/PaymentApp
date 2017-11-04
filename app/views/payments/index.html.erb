@@ -1,7 +1,20 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-8">
-    <%= link_to 'Menu', menu_path, class: "btn btn-default" %>
+    <div class="col-xs-4">
+      <%= link_to  menu_path do %>
+          <button type="button" class="btn btn-default btn-lg">
+            &nbsp;Menu
+          </button>
+      <% end %>
+    </div>
+
+    <div class="col-xs-3">
+      <%= link_to  new_payment_path do %>
+          <button type="button" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;New Payment
+          </button>
+      <% end %>
+
     </div>
   </div>
   <div class="row">

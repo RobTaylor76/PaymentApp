@@ -13,8 +13,10 @@ class PaymentsController < ApplicationController
     @payment = current_account.payments.build(strong_params)
 
     if @payment.save
+      flash.now[:info] = 'Choose Payment Method'
       render :show
     else
+      flash.now[:error] = 'There was an issue!'
       render :new
     end
   end
@@ -67,6 +69,7 @@ class PaymentsController < ApplicationController
 
     @payment.save
 
+    flash.now[:info] = 'Payment Paid!'
     render :show
   end
 

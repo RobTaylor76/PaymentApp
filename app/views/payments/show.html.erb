@@ -7,9 +7,32 @@
     </div>
   </div>
 
+
+
   <div class="panel">
+    <h3>Payment Details</h3>
+    <% if @payment.draft? %>
+
+        <form action="<%= payment_stripe_callback_url(@payment, guid: @payment.guid) %>" method="POST">
+          <script
+          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= current_account.stripe_pk %>"
+          data-currency="GBP"
+          data-amount="<%= @payment.amount_in_pence %>"
+          data-name="<%= current_account.name %>"
+          data-label="Pay with Stripe"
+          data-description="<%= @payment.description %>"
+          data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+          data-locale="auto"
+          data-email="<%= @payment.email %>"
+          data-allow-remember-me="false"
+          data-zip-code="false">
+          </script>
+        </form>
+
+    <% end %>
   <%= form_for(@payment) do |f| %>
-      <h3>Payment Details</h3>
+
 
       <% f.with_options(:disabled => true) do |form| %>
           <div class="form-group">
@@ -74,25 +97,5 @@
       <% end %>
   <% end %>
   </div>
-  <% if @payment.draft? %>
-
-      <form action="<%= payment_stripe_callback_url(@payment, guid: @payment.guid) %>" method="POST">
-        <script
-        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-        data-key="<%= current_account.stripe_pk %>"
-        data-currency="GBP"
-        data-amount="<%= @payment.amount_in_pence %>"
-        data-name="<%= current_account.name %>"
-        data-label="Pay with Stripe"
-        data-description="<%= @payment.description %>"
-        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-        data-locale="auto"
-        data-email="<%= @payment.email %>"
-        data-allow-remember-me="false"
-        data-zip-code="false">
-        </script>
-      </form>
-
-  <% end %>
 
 </div>
