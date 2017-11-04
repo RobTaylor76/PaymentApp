@@ -1,0 +1,11 @@
+html {
+ height: 100%;
+ background-image: url("../images/block_logo_1_small.png");
+ background-repeat: no-repeat;
+ background-position: left bottom;
+}
+
+footer {
+  display: block;
+  clear: both;
+}
