@@ -1,15 +1,27 @@
 
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <button type="button" class="btn btn-default btn-lg">
-      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Payment
-    </button>
+
+    <div class="col-md-8 col-md-offset-2">
+      <%= link_to  new_payment_path do %>
+          <button type="button" class="btn btn-default btn-lg">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;New Payment
+          </button>
+      <% end %>
+
+    </div>
+
   </div>
 
   <div class="row">
-    <button type="button" class="btn btn-default btn-lg">
-      <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Show Payments
-    </button>
+    <div class="col-md-8 col-md-offset-2">
+      <%= link_to  payments_path do %>
+        <button type="button" class="btn btn-default btn-lg">
+          <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>&nbsp;Show Payments
+        </button>
+      <% end %>
+    </div>
+
   </div>
 
 </div>
